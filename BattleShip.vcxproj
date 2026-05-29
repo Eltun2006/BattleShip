@@ -75,12 +75,14 @@
     <ClCompile Include="Ship.cpp" />
     <ClCompile Include="Grid.cpp" />
     <ClCompile Include="Placement.cpp" />
+    <ClCompile Include="EnemyAI.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ConsoleUtils.h" />
     <ClInclude Include="Ship.h" />
     <ClInclude Include="Grid.h" />
     <ClInclude Include="Placement.h" />
+    <ClInclude Include="EnemyAI.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets" />
