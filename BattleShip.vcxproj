@@ -74,11 +74,13 @@
     <ClCompile Include="ConsoleUtils.cpp" />
     <ClCompile Include="Ship.cpp" />
     <ClCompile Include="Grid.cpp" />
+    <ClCompile Include="Placement.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ConsoleUtils.h" />
     <ClInclude Include="Ship.h" />
     <ClInclude Include="Grid.h" />
+    <ClInclude Include="Placement.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets" />
