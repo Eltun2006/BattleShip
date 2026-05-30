@@ -1,10 +1,11 @@
-#include <iostream>
 #include <cstdlib>
 #include <ctime>
-#include <windows.h>
+#include "Game.h"
 
 int main()
 {
     srand(time(NULL));
+    Game game;
+    game.run();
     return 0;
 }

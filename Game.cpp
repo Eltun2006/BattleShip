@@ -9,7 +9,7 @@ using namespace std;
 
 Game::Game()
 {
-    yourTurn = rand() % 2;
+    yourTurn = true;
     over = 0;
     cursorX = 37;
     cursorY = 2;
@@ -66,10 +66,18 @@ void Game::paintVariantMenu(char variant[2][30], int selected)
     CreatField(0, 9);
 }
 
+void Game::drawBothFields()
+{
+    system("cls");
+    CreatField(0, 9);
+    PaintPos(playerGrid.cells, 2, 0);
+    CreatField(35, 4);
+    PaintPos(enemyGrid.cells, 37, 15);
+}
+
 void Game::setupAuto()
 {
     autoArrange(ships, playerGrid, 0);
-    PaintPos(playerGrid.cells, 2, 0);
 }
 
 void Game::setupManual()
@@ -148,6 +156,7 @@ void Game::playerAttack()
     int key = 0;
     do
     {
+        PaintPos(playerGrid.cells, 2, 0);
         PaintPos(enemyGrid.cells, 37, 15);
         setColor(DarkGray, DarkGray);
         SetCursor(cursorX, cursorY);
@@ -186,7 +195,9 @@ void Game::enemyAttack()
 {
     showMenu(0);
     PaintPos(playerGrid.cells, 2, 0);
+    PaintPos(enemyGrid.cells, 37, 15);
     ai.attack(playerGrid, ships, over, yourTurn);
+    PaintPos(playerGrid.cells, 2, 0);
 
     if (!yourTurn)
         showMenu(2);
@@ -214,22 +225,32 @@ void Game::run()
         switch (key)
         {
         case Up:
-            if (y > 0) { y--; change = y; paintVariantMenu(variant, change); }
+            if (y > 0)
+            {
+                y--; change = y; paintVariantMenu(variant, change); 
+            }
             break;
         case Down:
-            if (y < 1) { y++; change = y; paintVariantMenu(variant, change); }
+            if (y < 1)
+            {
+                y++; change = y; paintVariantMenu(variant, change);
+            }
             break;
         case Enter:
-            if (change == 0) { setupAuto();   A++; }
-            if (change == 1) { setupManual(); A++; }
+            if (change == 0)
+            {
+                setupAuto();   A++; 
+            }
+            if (change == 1)
+            {
+                setupManual(); A++;
+            }
             break;
         }
     } while (A < 1);
 
-    Sleep(20);
-    CreatField(35, 4);
     autoArrange(ships, enemyGrid, 10);
-    PaintPos(enemyGrid.cells, 37, 15);
+    drawBothFields();
 
     do
     {

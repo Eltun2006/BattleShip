@@ -20,6 +20,7 @@ private:
     int cursorX;
     int cursorY;
 
+    void drawBothFields();
     void showMenu(int num);
     void paintVariantMenu(char variant[2][30], int selected);
     void setupManual();
